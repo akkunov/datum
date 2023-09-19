@@ -1,10 +1,10 @@
 import {Auth} from "./auth";
 
-export function Login () {
+export function Register () {
     return (
         <Auth
-            title={`Sign in to your account`}
-            btnTitle={'Войти'}
+            title={`Зарегистрироваться`}
+            btnTitle={'Регистрация'}
         />
     )
 }
