@@ -75,12 +75,10 @@ const userSlice = createSlice({
 
         },
         [LoginUser.rejected]: (state, action) => {
-            console.log('========>',action.payload)
+            // console.log('========>',action.payload)
             state.isAuth =false
             state.isLoading = false
-            if(action.payload.status ==403){
-                state.errors = "Неверный логин или пароль";
-            }
+
         },
         [CheckEmail.fulfilled]: (state, action) => {
             state.errorEmail = action.payload

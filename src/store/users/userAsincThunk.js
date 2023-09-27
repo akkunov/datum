@@ -1,25 +1,43 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
 import {AuthService} from "../../servic/AuthService.js";
-import axios from "axios";
-// import {checkEmail} from "./userSlice.js";
 
 export const LoginUser = createAsyncThunk(
     'user/fetchUser',
     async  function (data, {rejectWithValue}){
         try {
             const {email, password } = data;
-            // console.warn(data)
+                console.log(email,password)
             const response  = await AuthService.login(email,password);
+            console.log(response)
             if(response.status != 200){
                 throw new Error('server error')
             }
             console.log(response.data)
             return response.data
         }catch (e){
+            console.log(e)
             return rejectWithValue(e?.response)
+
         }
+
     }
-    )
+)
+
+export const CheckEmail = createAsyncThunk(
+    'user/checkEmail',
+    async function (email, {rejectWithValue}) {
+            try {
+                const response = await AuthService.chekEmail(email)
+                console.log(response.data)
+                if(response.status != 200){
+                    throw new Error('server Error')
+                }
+                return response.data
+            }catch (e){
+                return rejectWithValue('server error')
+            }
+    }
+)
 
 export const Registration  = createAsyncThunk(
     'user/registration',
@@ -48,18 +66,3 @@ export const Registration  = createAsyncThunk(
     }
 )
 
-export const CheckEmail = createAsyncThunk(
-    'user/checkEmail',
-    async function (email, {rejectWithValue}) {
-            try {
-                const response = await AuthService.chekEmail(email)
-                console.log(response.data)
-                if(response.status != 200){
-                    throw new Error('server Error')
-                }
-                return response.data
-            }catch (e){
-                return rejectWithValue('server error')
-            }
-    }
-)

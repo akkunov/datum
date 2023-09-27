@@ -1,14 +1,13 @@
 import {Link} from "react-router-dom";
 import {useState} from "react";
+import {useForm} from "react-hook-form";
 
 export function Auth(props) {
     const [email, setEmail] =useState('');
     const [password, setPassword] =useState('');
-
     const {title, btnTitle, onClick} = props
     function handleSubmit  () {
-        console.log(email, password)
-            onClick(email,password)
+        onClick(email,password)
     }
     return(
         <div className="flex min-h-full flex-col items-center justify-center px-6 py-12 extra:px-8">
@@ -22,7 +21,7 @@ export function Auth(props) {
                 </div>
 
                 <div className="mt-10 phone:mx-auto phone:w-full phone:max-w-sm">
-                    <form className="space-y-6" >
+                    <form className="space-y-6">
                         <div>
                             <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                                 E-mail
@@ -63,7 +62,7 @@ export function Auth(props) {
                     </form>
 
                     <p className="mt-10 text-center text-sm text-gray-500">
-                        {/*<span>Ещё нет аккаунта? </span><Link >Регистрация</Link>*/}
+                        <span>Ещё нет аккаунта? </span><Link >Регистрация</Link>
                     </p>
                 </div>
         </div>

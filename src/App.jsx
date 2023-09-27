@@ -1,4 +1,4 @@
-import {Login} from "./components/Login.jsx";
+import {Login} from "./components/auth/Login.jsx";
 import {
     createBrowserRouter,
     createRoutesFromElements,
@@ -6,7 +6,6 @@ import {
     RouterProvider
 } from "react-router-dom";
 import Main from "./components/Main.jsx";
-import {Register} from "./components/Register.jsx";
 import {Root} from './routes/root.jsx'
 import {Clinic} from "./pages/Clinics.jsx";
 import {Patients} from "./pages/Patients";
@@ -17,6 +16,7 @@ import {Calendar} from "./pages/Calendar";
 import {BoxOffice} from "./pages/BoxOffice";
 import {Accaption} from "./pages/Accaption";
 import {Name} from "./pages/Name";
+import {Register} from "./components/auth/register.jsx";
 
 
 
@@ -26,7 +26,7 @@ function App() {
                 <Route  index path={'login'}  element={<Login/>}/>
                 <Route path={'reg'} element={<Name />} />
                 <Route path={'reg/me'} element={<Register/>} />
-            <Route  path={'/'} element={<Main/>}>
+            <Route  path={'/main'} element={<Main/>}>
                 <Route path={'clinic'} element={<Clinic />}/>
                 <Route path={'patient'} element={<Patients />}/>
                 <Route path={'personal'} element={<Personal />}/>
