@@ -1,7 +1,9 @@
-function Root () {
-    return(
-        <div className={'container'}>
+import {Outlet} from "react-router-dom";
 
-        </div>
+export function Root () {
+    return(
+        <>
+            <Outlet />
+        </>
     )
 }

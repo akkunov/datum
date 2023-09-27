@@ -1,16 +1,25 @@
 import axios from 'axios'
-const url = `https://jsonplaceholder.typicode.com`
+import {useLocalStorage} from "../Hooks/Hooks.js";
+const url = `http://localhost:8080/api/v1/auth`
+const clinicUrl = `http://localhost:8080/api/v1/clinic`
 export const $api = axios.create({
-
     baseURL: url,
 })
 
 $api.interceptors.request.use((config) => {
-    config.headers.Authorization = `Bearer ${localStorage.getItem('accessToken')}`
+    config.headers.Authorization = `Bearer ${useLocalStorage.getToken('accessToken')}`
+    return configs
+})
+
+export const $clinic = axios.create({
+    baseURL: clinicUrl,
+})
+
+$clinic.interceptors.request.use((config) => {
+    config.headers.Authorization = `Bearer ${useLocalStorage.getToken('accessToken')}`
     return config
 })
 
-export const $user = axios.create({
-    baseURL: url,
-    withCredentials: true
+$clinic.interceptors.request.use((config) => {
+
 })

@@ -2,16 +2,16 @@ import {$api} from "../http/index.js";
 
 export  class AuthService {
     static async login (email, password) {
-        return  $api.post('/users', {email,password})
+        return  $api.post('/authenticate', {email,password})
     }
-    static async registration (email, password) {
-        return $api.post('/register', )
+    static async registration (email, password, person) {
+        return $api.post('/register',{email,password, person} )
     }
     static async logout (email, password) {
         return $api.post('/authenticate', )
     }
     static async chekEmail (email) {
-        return $api.post('/checkEmail', )
+        return $api.post('/checkEmail',{email} )
     }
     static async setPassword (token, password) {
         return $api.post('/setPassword', )

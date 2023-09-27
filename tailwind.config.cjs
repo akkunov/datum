@@ -21,10 +21,22 @@ module.exports =  {
       'phone': {'max': '639px'},
       // => @media (max-width: 639px) { ... }
     },
-    shadows: {
+    // colors: {
+    //   // 'soft': '#ECF0F6',
+    //   // 'indigo-600': '#2563eb',
+    //   // 'indigo-500': '#3b82f6',
+    //   // 'white': 'white'
+    // },
+    extend: {
+      boxShadow:{
+        'shadow-ls': `-15px -15px 15px rgba(255, 255, 255, 0.8),
+                15px 15px 15px rgba(0,0,0,0.1),
+                inset 10px 10px 10px rgba(255, 255, 255, 0.2),
+                inset 10px 10px 10px rgba(0,0,0,0.1)`,
+                'shadow-soft': `-15px -15px  15px rgba(255, 255, 255, 0.8),
+                10px 10px 15px rgba(0,0,0,0.1)`
+      }
     },
-
-    extend: {},
   },
   plugins: [],
 }
