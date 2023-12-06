@@ -61,7 +61,7 @@ export const CNavLink = ({menu,  setMenu}) => {
                         <span className={`text-[12px] font-medium  ${menu ? '': 'hidden'}`}>Касса</span>
                     </div>
                 </NavLink>
-                <NavLink to={'clinic'}
+                <NavLink to={'clinics'}
                          className={`my-2  py-2 hover:border-l-blue-600 hover:border-l-2 hover:translate-x-4
                         transition duration-300 active:bg-amber-200`}>
                     <div className={`flex flex-row  space-x-12 px-4`}>

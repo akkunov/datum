@@ -1,0 +1,68 @@
+[33mcommit d5572b836ed3758228b26cae8251c9edf3a6cf60[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Adilet <akunov313131@gmail.com>
+Date:   Wed Sep 27 21:41:48 2023 +0600
+
+    conur dsd
+
+[33mcommit 379b248852a9a4b415d2f62c95d0e43abdf429d1[m
+Author: Adilet <akunov313131@gmail.com>
+Date:   Wed Sep 27 17:07:55 2023 +0600
+
+    Revert "Add files via upload"
+    
+    This reverts commit 906881ab
+
+[33mcommit ad33148d279eee73e74663f4fc4217681c9aa95c[m
+Author: Adilet <akunov313131@gmail.com>
+Date:   Wed Sep 27 16:58:32 2023 +0600
+
+    change all
+
+[33mcommit ba9472d6e0e29048783078093e4d6629440075c3[m
+Author: Adilet <75267228+akkunov@users.noreply.github.com>
+Date:   Tue Sep 19 19:22:46 2023 +0600
+
+    Add files via upload
+
+[33mcommit cf82f9224ea7235e0b2b8c193fe03db209fc6d50[m
+Author: Adilet <75267228+akkunov@users.noreply.github.com>
+Date:   Tue Sep 19 19:19:56 2023 +0600
+
+    Add files via upload
+
+[33mcommit d0345784330df0f4873f9512ee9bd3a913c21c39[m
+Merge: 074683e 906881a
+Author: Adilet <akunov313131@gmail.com>
+Date:   Tue Sep 19 19:08:37 2023 +0600
+
+    Merge remote-tracking branch 'origin/main'
+
+[33mcommit 074683eef0ec39458ac54708114a7bd4005d10d4[m
+Author: Adilet <akunov313131@gmail.com>
+Date:   Tue Sep 19 19:05:07 2023 +0600
+
+    first c
+
+[33mcommit 906881ab374318fab2b8a25fd8a817d603ec8019[m
+Author: Adilet <75267228+akkunov@users.noreply.github.com>
+Date:   Tue Sep 19 18:53:06 2023 +0600
+
+    Add files via upload
+
+[33mcommit 216faeed2eaca14510d53c11fe787726b38562a5[m
+Author: Adilet <akunov313131@gmail.com>
+Date:   Tue Sep 19 18:35:59 2023 +0600
+
+    change all
+
+[33mcommit 6126d38aa5fef0259f5ddfceb82747a930529e99[m
+Author: Adilet <akunov313131@gmail.com>
+Date:   Tue Sep 19 18:28:14 2023 +0600
+
+    first commit
+
+[33mcommit 51913310862d701a23adc68a97df76bed8fddd8d[m
+Author: Adilet <akunov313131@gmail.com>
+Date:   Sat Sep 9 23:06:19 2023 +0600
+
+    Initialize project using Create React App

@@ -1,9 +1,10 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {CheckEmail, LoginUser} from "./userAsincThunk.js";
+import {CheckEmail, Confirm, LoginUser, Registration} from "./userAsincThunk.js";
 
 const initialState = {
     user :null,
     email: null,
+    password: null,
     accessToken: null,
     refreshToken: null,
     errors: null,
@@ -11,21 +12,22 @@ const initialState = {
     role: "USER",
     isAuth: false,
     isLoading: false,
+    active: false,
     person: {
-        firstname: "string",
-        surname: "string",
-        patronymic: "string",
-        address: "string",
-        phone: "string",
-        email: "string",
-        country: "string",
+        firstname: null,
+        surname: null,
+        patronymic: null,
+        address: null,
+        phone: null,
+        email: null,
+        country: null,
         family: true,
         male: true,
-        issue: "2023-09-12",
-        expiry: "2023-09-12",
-        authority: "string",
-        birthDay: "2023-09-12",
-        passportSeries: "string",
+        issue: null,
+        expiry: null,
+        authority: null,
+        birthDay: null,
+        passportSeries: null,
         passportNumber: 0,
         pin: 0
     },
@@ -57,33 +59,81 @@ const userSlice = createSlice({
             console.log(action.payload);
             state.errorEmail = action.payload;
         },
+        logout: (state,action) => {
+            state.accessToken = null;
+            state.refreshToken = null;
+            state.errors = null;
+            state.isAuth= false;
+        },
+        codeHelper : (state, action) => {
+            state.email = action.payload.email
+            state.password = action.payload.password
+
+        }
     },
 
-    extraReducers : {
-        [LoginUser.pending]: (state) =>{
-            state.isLoading = true;
-        },
-        [LoginUser.fulfilled]: (state, action) => {
-            console.log(action.payload)
-            state.isLoading = false
-            state.isAuth = true;
-            state.accessToken = action.payload.access_token;
-            state.refreshToken = action.payload.refresh_token;
-            localStorage.setItem('refreshToken', action.payload.refresh_token)
-            localStorage.setItem('accessToken', action.payload.access_token)
-            state.errors = null
+    extraReducers : (builder) => {
+        builder
+            .addCase(LoginUser.pending, (state, action) => {
+                state.isLoading = true;
+        })
+            .addCase(LoginUser.fulfilled, (state,action)=>{
+                console.log(action.payload)
+                const accessToken  = action.payload.headers.authorization
+                const refreshToken  = action.payload.headers.refreshtoken
+                state.isLoading = false
+                state.isAuth = true;
+                state.accessToken = accessToken
+                state.refreshToken = accessToken ;
+                localStorage.setItem('refreshToken', refreshToken)
+                localStorage.setItem('accessToken', accessToken)
+                state.errors = null
+        })
+            .addCase(LoginUser.rejected, (state, action) => {
+                state.isAuth =false
+                state.isLoading = false;
+                state.errors = action.payload?.data?.message
 
-        },
-        [LoginUser.rejected]: (state, action) => {
-            // console.log('========>',action.payload)
-            state.isAuth =false
-            state.isLoading = false
+            })
+            .addCase(CheckEmail.fulfilled, (state, action) => {
+                state.errorEmail = action.payload
+            })
+            .addCase(Registration.pending, (state,action) => {
+                state.isLoading = true;
+            })
+            .addCase(Registration.fulfilled, (state, action) => {
+                state.isLoading = false
+                state.isAuth = true;
 
-        },
-        [CheckEmail.fulfilled]: (state, action) => {
-            state.errorEmail = action.payload
-        }
+                // state.accessToken = action.payload.access_token;
+                // state.refreshToken = action.payload.refresh_token;
+                // localStorage.setItem('refreshToken', action.payload.refresh_token)
+                // localStorage.setItem('accessToken', action.payload.access_token)
+                state.errors = null
+            })
+            .addCase(Registration.rejected, (state, action) => {
+                state.isAuth =false;
+                state.isLoading = false;
+                if (action.payload?.data?.message == 'Вы уже зарегистрированы войдите'){
+                    state.errors = 'Вы уже зарегестрировались вернитесь  на страницу логина';
+                }else {
+                    state.errors = 'server error!';
+                }
+            })
+            .addCase(Confirm.pending, (state, action) => {
+                state.isLoading = true;
+                console.log(action.payload);
+            })
+            .addCase(Confirm.fulfilled, (state, action) => {
+                state.isLoading = false;
+                console.log(action.payload);
+            })
+            .addCase(Confirm.rejected, (state, action) => {
+                state.isLoading = false;
+                console.log(action.payload);
+            })
+
     }
 })
-export  const {user,checkEmail} = userSlice.actions
+export  const {user,checkEmail,codeHelper} = userSlice.actions
 export default  userSlice.reducer

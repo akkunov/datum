@@ -15,5 +15,5 @@ export class useLocalStorage {
 
     static setToken(key ,token) { localStorage.setItem(key, token)};
 
-    static removeToken (key ,token) { localStorage.setItem(key, token)};
+    static removeToken (key) { localStorage.removeItem(key)};
 }

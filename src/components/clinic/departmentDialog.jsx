@@ -6,6 +6,8 @@ import {Rooms} from "./Rooms.jsx";
 
 
 export default function DepartmentDialog (props) {
+
+    //create localstate
     const [open, setOpen] = useState(false);
     const [rooms, setRooms] = useState([{
 	name:'',
@@ -13,6 +15,8 @@ export default function DepartmentDialog (props) {
 	    name:'',
 	}]
     }]);
+
+    // get props
     const {clinic, dataSubmit, btnTitle,  departmentId = 0} = props
     const {control, handleSubmit,} = useForm()
     //Добавление комнаты
@@ -69,7 +73,6 @@ export default function DepartmentDialog (props) {
     }
     return (
 	<div>
-	    {/*<BsBuildingFillAdd/>*/}
 	    <Button variant="outlined" onClick={handleClickOpen}>
 		{btnTitle}
 	    </Button>

@@ -1,23 +1,26 @@
 import {Auth} from "./Auth.jsx";
 import {useNavigate} from "react-router-dom";
 import {useDispatch} from "react-redux";
-import {Registration} from "../../store/users/userAsincThunk.js";
+import {CheckEmail, Registration} from "../../store/users/userAsincThunk.js";
 
 export const Register = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    function handleClick (email, password) {
-	dispatch(Registration({email,password}))
-	    .then(() => navigate('/'))
-	console.log(dispatch)
+    const checkEmail = (email) => {
+	dispatch(CheckEmail(email))
+    }
+    function handleClick ({email, password}) {
+	dispatch(Registration({email,password,navigate}))
     }
 
 
     return(
 	<Auth
-	    title={`Авторизаваться`}
+	    title={`Регистрация`}
 	    btnTitle={'Войти'}
+	    link={'login'}
 	    onClick ={handleClick}
+	    checkEmail={checkEmail}
 	/>
     )
 }
